@@ -1,0 +1,30 @@
+{
+  "name": "@malopez1578/webpackCli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "@malopez1578/game": "bin/create-project",
+    "game": "bin/create-project"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "webpack",
+    "games"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/malopez1578/cli-games-webpack.git"
+  },
+  "author": "Miguel Angel López",
+  "license": "ISC",
+  "dependencies": {
+    "esm": "^3.2.25"
+  }
+}
