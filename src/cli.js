@@ -1,32 +1,39 @@
 import arg from 'arg';
 import inquirer from 'inquirer';
+import { webpackInit } from './webpackConfig';
 
 function parseArguments(rawArgs) {
-  const args = arg(
-    {
-      '--new': Boolean,
-      '--start': Boolean,
-      '--init': Boolean,
-      '--install': Boolean,
-      '--git': Boolean,
-      '-g': '--git',
-      '-ins': '--install',
-      '-i': '--init',
-      '-n': '--new',
-      '-s': '--start',
-    },
-    {
-      argv: rawArgs.slice(2),
+  try {
+    const args = arg(
+      {
+        '--new': Boolean,
+        '--start': Boolean,
+        '--server': Boolean,
+        '--build': Boolean,
+        '-serv': '--server',
+        '-b': '--build',
+        '-n': '--new',
+        '-s': '--start',
+      },
+      {
+        argv: rawArgs.slice(2),
+      }
+    );
+    return {
+      new: args['--new'] || false,
+      start: args['--start'] || false,
+      server: args['--server'] || false,
+      build: args['--build'] || false,
+      template: args._[0],
+    };
+  } catch (err) {
+    if (err.code === 'ARG_UNKNOWN_OPTION') {
+      console.log(err.message);
+      return null;
+    } else {
+      return null;
     }
-  );
-  return {
-    new: args['--new'] || false,
-    start: args['--start'] || false,
-    init: args['--init'] || false,
-    install: args['--install'] || false,
-    git: args['--git'] || false,
-    template: args._[0],
-  };
+  }
 }
 
 async function promptMissingOptions(options) {
@@ -50,26 +57,22 @@ async function promptMissingOptions(options) {
       });
     }
   }
-  if (options.init) {
-    if (!options.git) {
-      questions.push({
-        type: 'confirm',
-        name: 'git',
-        message: 'initialze a git repository',
-        default: false,
-      });
-      options.template = 'webpackInit';
-    }
+
+  if (options.start) {
+    options.server = true;
   }
+
   const answers = await inquirer.prompt(questions);
   return {
     ...options,
-    template: options.template || answers.template,
-    git: options.git || answers.git || false,
+    template: options.template || answers.template || defaultTemplate,
   };
 }
 
 export async function cli(args) {
   let options = parseArguments(args);
-  options = await promptMissingOptions(options);
+  if (options) {
+    options = await promptMissingOptions(options);
+    await webpackInit(options);
+  }
 }
