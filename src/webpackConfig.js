@@ -43,7 +43,8 @@ export async function webpackInit(options) {
       new webpack.NoEmitOnErrorsPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new TSLintPlugin({
-        files: ['./src/**/*.ts'],
+        config: './../tslint.json',
+        files: [path.resolve(__dirname, options.targetDirectory) + '**/*.ts'],
       }),
       new HTMLWebpackPlugin({
         template: './index.pug',

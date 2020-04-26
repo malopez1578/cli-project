@@ -1,16 +1,21 @@
 import './index.scss';
 
+interface ILolo {
+  house: string;
+}
+
 export class Foo {
-  constructor() {
+  public data: ILolo;
+  private constructor() {
     console.log('classWorks');
   }
-  messane(msg: string) {
+  private messane(msg: string) {
     console.log(msg);
   }
-  newMetos(msg: string) {
+  private newMetos(msg: string) {
     const fresa = 'mamasita';
-    console.log(`Foo -> newMetos -> fresa`, fresa);
-    console.log(`Foo -> newMetos -> fresa`, fresa);
+    console.log('Foo -> newMetos -> fresa', fresa);
+    console.log('Foo -> newMetos -> fresa', fresa);
     console.log(msg, 'de neuvo');
   }
 }
