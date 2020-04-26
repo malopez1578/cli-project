@@ -12,11 +12,7 @@ export async function webpackInit(options) {
   };
   const config = {
     context: options.targetDirectory,
-    entry: [
-      // 'webpack-dev-server/client?http://localhost:8080/',
-      // 'webpack/hot/only-dev-server',
-      `./index.ts`,
-    ],
+    entry: [`./index.ts`],
     mode: options.server ? 'development' : 'production',
     devtool: options.server ? 'cheap-module-eval-source-map' : 'source-map',
     module: {
@@ -41,11 +37,7 @@ export async function webpackInit(options) {
     },
     optimization: {
       minimize: true,
-      minimizer: [
-        new TerserPlugin({
-          sourceMap: true,
-        }),
-      ],
+      minimizer: [new TerserPlugin({ cache: true, parallel: true, sourceMap: true })],
     },
     plugins: [
       new webpack.NoEmitOnErrorsPlugin(),
@@ -87,7 +79,6 @@ export async function webpackInit(options) {
       stats: 'minimal',
       host: 'localhost',
       compress: true,
-      hot: false,
       overlay: true,
       inline: true,
       quiet: false,
@@ -104,8 +95,8 @@ export async function webpackInit(options) {
     const compiler = webpack(config);
     const server = new webpackDevServer(compiler, servOpts);
 
-    server.listen(8080, 'localhost', () => {
-      console.log('dev server listening on port 8080');
+    server.listen(options.port, 'localhost', () => {
+      console.log('dev server listening on port', options.port);
     });
   }
 }

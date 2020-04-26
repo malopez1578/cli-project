@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+// require = require('esm')(module /*, option */);
+// const argv = require('../src/optionsCLI').argv;
+// const comand = argv._[0];
+
+// require('../src/cli').cli(comand, argv);
+
+require = require('esm')(module /*, option */);
+require('../src/cli').cli(process.argv);

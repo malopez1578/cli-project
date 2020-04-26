@@ -10,6 +10,8 @@ function parseArguments(rawArgs) {
         '--start': Boolean,
         '--server': Boolean,
         '--build': Boolean,
+        '--port': Number,
+        '-p': '--port',
         '-serv': '--server',
         '-b': '--build',
         '-n': '--new',
@@ -24,6 +26,7 @@ function parseArguments(rawArgs) {
       start: args['--start'] || false,
       server: args['--server'] || false,
       build: args['--build'] || false,
+      port: args['--port'] || 8080,
       template: args._[0],
     };
   } catch (err) {
