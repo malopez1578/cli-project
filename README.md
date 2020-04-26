@@ -35,21 +35,21 @@ with NPM 5.5.1 or higher.
 ### Install Globally
 
 ```bash
-npm install -g @malopez1578/games-webpack-cli
+npm install -g @malopez1578/gamescli
 ```
 
 ### Install Locally
 
 ```bash
-npm install @malopez1578/games-webpack-cli
+npm install @malopez1578/gamescli
 ```
 
-Alternatively, you can install [npx](https://www.npmjs.com/package/npx) and run `npx game <command>` within the local directory where `npm install @malopez1578/games-webpack-cli` was run, which will use the locally installed angular-cli.
+Alternatively, you can install [npx](https://www.npmjs.com/package/npx) and run `npx game <command>` within the local directory where `npm install @malopez1578/gamescli` was run, which will use the locally installed angular-cli.
 
 ### Install Specific Version (Example: 1.0.0)
 
 ```bash
-npm install -g @malopez1578/games-webpack-cli@1.0.0
+npm install -g @malopez1578/gamescli@1.0.0
 ```
 
 ## Usage
@@ -84,12 +84,8 @@ game --build
 
 ## License
 
-[MIT](https://github.com/maopez1578/cli-games-webpack/blob/master/LICENSE)
+[MIT](https://github.com/malopez1578/cli-games-webpack/blob/master/LICENSE.md)
 
 ## TODO
 
 - Generate documentation.
-
-```
-
-```
