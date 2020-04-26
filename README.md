@@ -55,7 +55,13 @@ npm install -g @malopez1578/gamescli@1.0.0
 ## Usage
 
 ```bash
-game [--start, --build]
+game [--start, --build, --help]
+```
+
+### Show help
+
+```bash
+game --help
 ```
 
 ### Generating and serving an Game compile via a development server
@@ -78,6 +84,20 @@ game --start --port 3030
 ```bash
 cd PROJECT-NAME
 game --build
+```
+
+### Generating initial game files in typescript or Javascript
+
+```bash
+cd PROJECT-NAME
+game --new
+```
+
+Optional you can select the template
+
+```bash
+cd PROJECT-NAME
+game --new --template Typescript
 ```
 
 ## Documentation
