@@ -1,6 +1,6 @@
 {
   "name": "@malopez1578/gamescli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI games with webpack",
   "main": "index.js",
   "bin": {
