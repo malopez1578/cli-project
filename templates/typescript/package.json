@@ -1,0 +1,31 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "template",
+    "games",
+    "typescript"
+  ],
+  "author": "Miguel Angel Lopez",
+  "license": "ISC",
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "css-loader": "^3.5.2",
+    "node-sass": "^4.13.1",
+    "pug": "^2.0.4",
+    "pug-loader": "^2.4.0",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.4",
+    "terser-webpack-plugin": "^2.3.5",
+    "ts-loader": "^7.0.1",
+    "tslint": "^6.1.1",
+    "tslint-microsoft-contrib": "^6.2.0",
+    "tslint-webpack-plugin": "^2.1.0",
+    "typescript": "^3.8.3"
+  }
+}

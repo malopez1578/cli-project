@@ -11,10 +11,9 @@ export async function webpackInit(options) {
     targetDirectory: options.targetDirectory || process.cwd(),
   };
   const config = {
-    context: options.targetDirectory,
-    entry: [`./index.ts`],
+    entry: [`${options.targetDirectory}/index.ts`],
     mode: options.server ? 'development' : 'production',
-    devtool: options.server ? 'cheap-module-eval-source-map' : 'source-map',
+    devtool: options.server ? 'cheap-module-eval-source-map' : 'inline-source-map',
     module: {
       rules: [
         {
@@ -43,8 +42,8 @@ export async function webpackInit(options) {
       new webpack.NoEmitOnErrorsPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new TSLintPlugin({
-        config: './../tslint.json',
-        files: [path.resolve(__dirname, options.targetDirectory) + '**/*.ts'],
+        config: `${options.rootDirectory}/tslint.json`,
+        files: [`${options.targetDirectory}/*.ts`],
       }),
       new HTMLWebpackPlugin({
         template: './index.pug',
@@ -68,6 +67,7 @@ export async function webpackInit(options) {
       // Stats Object
       if (err || stats.hasErrors()) {
         // Handle errors here
+        process.exit(1);
       }
       // Done processing
     });

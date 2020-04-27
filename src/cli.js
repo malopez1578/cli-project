@@ -6,6 +6,7 @@ import { helperCli } from './help';
 import { webpackInit } from './webpackConfig';
 
 const templateDirect = path.resolve(__dirname, './../templates');
+const rootDirectory = path.resolve(__dirname, './../');
 
 function parseArguments(rawArgs) {
   try {
@@ -17,6 +18,8 @@ function parseArguments(rawArgs) {
         '--build': Boolean,
         '--port': Number,
         '--help': Boolean,
+        '--install': Boolean,
+        '-i': '--install',
         '-h': '--help',
         '-p': '--port',
         '-serv': '--server',
@@ -35,6 +38,7 @@ function parseArguments(rawArgs) {
       build: args['--build'] || false,
       port: args['--port'] || 8080,
       help: args['--help'] || false,
+      runInstall: args['--install'] || false,
       template: args._[0],
     };
   } catch (err) {
@@ -58,27 +62,37 @@ async function promptMissingOptions(options) {
     }
 
     const questions = [];
-    if (options.new) {
-      if (!options.template) {
-        questions.push({
-          type: 'list',
-          name: 'template',
-          message: 'please choose which game template to use',
-          choices: ['Javascript', 'Typescript'],
-          default: defaultTemplate,
-        });
-      }
-    }
 
     if (options.start) {
       options.server = true;
+    }
+
+    if (options.new) {
+      if (!options.git) {
+        questions.push({
+          type: 'confirm',
+          name: 'git',
+          message: 'initialze a git repository',
+          default: false,
+        });
+      }
+      if (!options.install) {
+        questions.push({
+          type: 'confirm',
+          name: 'install',
+          message: 'install dependences',
+          default: false,
+        });
+      }
     }
 
     const answers = await inquirer.prompt(questions);
     return {
       ...options,
       template: options.template || answers.template || defaultTemplate,
-      templateDir: `${templateDirect}/${answers.template.toLowerCase()}`,
+      templateDir: `${templateDirect}/${defaultTemplate.toLowerCase()}`,
+      runInstall: options.install || answers.install,
+      rootDirectory,
     };
   } else {
     return {
