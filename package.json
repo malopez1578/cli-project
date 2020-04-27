@@ -40,9 +40,7 @@
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "tslint-microsoft-contrib": "^6.2.0",
-    "webpack-dev-server": "^3.10.3"
-  },
-  "devDependencies": {
+    "webpack-dev-server": "^3.10.3",
     "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^3.5.2",
     "node-sass": "^4.13.1",
