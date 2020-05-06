@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const TSLintPlugin = require('tslint-webpack-plugin');
 const webpackDevServer = require('webpack-dev-server');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -16,6 +15,19 @@ export async function webpackInit(options) {
     devtool: options.server ? 'cheap-module-eval-source-map' : 'inline-source-map',
     module: {
       rules: [
+        {
+          test: /\.(ts|tsx)$/,
+          enforce: 'pre',
+          use: [
+            {
+              loader: 'eslint-loader',
+              options: {
+                fix: true,
+              },
+            },
+          ],
+          exclude: /node_modules/,
+        },
         {
           test: /\.tsx?$/,
           loader: 'awesome-typescript-loader',
@@ -41,10 +53,6 @@ export async function webpackInit(options) {
     plugins: [
       new webpack.NoEmitOnErrorsPlugin(),
       new webpack.HotModuleReplacementPlugin(),
-      new TSLintPlugin({
-        config: `${options.rootDirectory}/tslint.json`,
-        files: [`${options.targetDirectory}/*.ts`],
-      }),
       new HTMLWebpackPlugin({
         template: './index.pug',
         filename: 'index.html',
