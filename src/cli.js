@@ -90,6 +90,7 @@ async function promptMissingOptions(options) {
     return {
       ...options,
       template: options.template || answers.template || defaultTemplate,
+      git: options.git || answers.git || false,
       templateDir: `${templateDirect}/${defaultTemplate.toLowerCase()}`,
       runInstall: options.install || answers.install,
       rootDirectory,
