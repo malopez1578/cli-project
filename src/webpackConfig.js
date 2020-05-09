@@ -10,36 +10,48 @@ export async function webpackInit(options) {
     targetDirectory: options.targetDirectory || process.cwd(),
   };
   const config = {
-    entry: [`${options.targetDirectory}/index.ts`],
+    entry: [path.resolve(__dirname, options.targetDirectory + '/index.ts')],
     mode: options.server ? 'development' : 'production',
     devtool: options.server ? 'cheap-module-eval-source-map' : 'inline-source-map',
     module: {
       rules: [
         {
-          test: /\.(ts|tsx)$/,
+          test: /\.tsx?$/,
           enforce: 'pre',
           use: [
             {
-              loader: 'eslint-loader',
               options: {
-                fix: true,
+                cache: true,
+                eslintPath: require.resolve('eslint'),
+                resolvePluginsRelativeTo: __dirname,
+                ignore: true,
+                baseConfig: {
+                  extends: [require.resolve('config-eslint')],
+                },
+                useEslintrc: true,
               },
+              loader: require.resolve('eslint-loader'),
             },
           ],
+          include: path.resolve(__dirname, options.targetDirectory),
           exclude: /node_modules/,
         },
         {
           test: /\.tsx?$/,
-          loader: 'awesome-typescript-loader',
+          loader: require.resolve('awesome-typescript-loader'),
           exclude: /node_modules/,
         },
         {
           test: /\.pug$/,
-          loader: 'pug-loader',
+          loader: require.resolve('pug-loader'),
         },
         {
           test: /\.scss$/,
-          use: ['style-loader', 'css-loader', 'sass-loader'],
+          use: [
+            require.resolve('style-loader'),
+            require.resolve('css-loader'),
+            require.resolve('sass-loader'),
+          ],
         },
       ],
     },
@@ -48,11 +60,34 @@ export async function webpackInit(options) {
     },
     optimization: {
       minimize: true,
-      minimizer: [new TerserPlugin({ cache: true, parallel: true, sourceMap: true })],
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            parse: {
+              ecma: 8,
+            },
+            compress: {
+              ecma: 5,
+              warnings: false,
+              comparisons: false,
+              inline: 2,
+            },
+            mangle: {
+              safari10: true,
+            },
+            keep_classnames: options.build,
+            keep_fnames: options.build,
+            output: {
+              ecma: 5,
+              comments: false,
+              ascii_only: true,
+            },
+          },
+          sourceMap: options.server,
+        }),
+      ],
     },
     plugins: [
-      new webpack.NoEmitOnErrorsPlugin(),
-      new webpack.HotModuleReplacementPlugin(),
       new HTMLWebpackPlugin({
         template: './index.pug',
         filename: 'index.html',
@@ -72,12 +107,10 @@ export async function webpackInit(options) {
 
   if (options.build) {
     webpack(config, (err, stats) => {
-      // Stats Object
       if (err || stats.hasErrors()) {
-        // Handle errors here
+        console.error(err);
         process.exit(1);
       }
-      // Done processing
     });
   }
 

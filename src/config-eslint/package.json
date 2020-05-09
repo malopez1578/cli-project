@@ -1,0 +1,21 @@
+{
+  "name": "@malopez1578/config-eslint",
+  "version": "1.0.0",
+  "description": "config eslint webpack game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "eslint",
+    "config",
+    "typescript"
+  ],
+  "author": "Miguel Angel López",
+  "license": "ISC",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
+    "eslint": "^7.0.0"
+  }
+}
