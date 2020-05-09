@@ -1,18 +1,18 @@
 import './index.scss';
 
-interface IDataGame {
+interface IdataGame {
   answer: string[];
 }
 
 export class NameGame {
-  private readonly dataGame: IDataGame;
+  private readonly _dataGame: IdataGame;
   constructor() {
     this.exampleMethod();
   }
   /**
    * exampleMethod
    */
-  public exampleMethod() {
-    console.log('dataGame', typeof this.dataGame);
+  public exampleMethod(): void {
+    console.log('dataGame', typeof this._dataGame);
   }
 }
