@@ -21,12 +21,6 @@ module.exports = {
     },
   },
   rules: {
-    // TypeScript's `noFallthroughCasesInSwitch` option is more robust (#6906)
-    'default-case': 'off',
-    'no-dupe-class-members': 'off',
-    'no-undef': 'off',
-
-    // Add TypeScript specific rules (and turn off ESLint equivalents)
     '@typescript-eslint/explicit-member-accessibility': [
       'error',
       {
@@ -77,7 +71,6 @@ module.exports = {
     '@typescript-eslint/consistent-type-assertions': 'warn',
     'no-array-constructor': 'off',
     '@typescript-eslint/no-array-constructor': 'warn',
-    'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': [
       'warn',
       {
@@ -87,7 +80,6 @@ module.exports = {
         typedefs: false,
       },
     ],
-    'no-unused-expressions': 'off',
     '@typescript-eslint/no-unused-expressions': [
       'error',
       {
@@ -96,7 +88,6 @@ module.exports = {
         allowTaggedTemplates: true,
       },
     ],
-    'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': [
       'warn',
       {
@@ -104,14 +95,12 @@ module.exports = {
         ignoreRestSiblings: true,
       },
     ],
-    'no-useless-constructor': 'off',
     '@typescript-eslint/no-useless-constructor': 'warn',
     'array-callback-return': 'warn',
     'default-case': ['warn', { commentPattern: '^no default$' }],
     'dot-location': ['warn', 'property'],
     eqeqeq: ['warn', 'smart'],
     'new-parens': 'warn',
-    'no-array-constructor': 'warn',
     'no-caller': 'warn',
     'no-cond-assign': ['warn', 'except-parens'],
     'no-const-assign': 'warn',

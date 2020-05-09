@@ -1,0 +1,36 @@
+{
+  "name": "@malopez1578/eslint-config-project-app",
+  "version": "1.0.0",
+  "description": "config eslint project app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malopez1578/cli-games-webpack.git",
+    "directory": "packages/eslint-config-project-app"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "eslintConfig": {
+    "extends": "./index.js"
+  },
+  "keywords": [
+    "eslint",
+    "config",
+    "typescript"
+  ],
+  "author": "Miguel Angel López",
+  "license": "ISC",
+  "peerDependencies": {
+    "@typescript-eslint/eslint-plugin": ">=2.x",
+    "@typescript-eslint/parser": ">=2.x",
+    "eslint": ">=7.x"
+  },
+  "bugs": {
+    "url": "https://github.com/malopez1578/cli-games-webpack/issues"
+  },
+  "homepage": "https://github.com/malopez1578/cli-games-webpack/packages/eslint-config-project-app#readme"
+}

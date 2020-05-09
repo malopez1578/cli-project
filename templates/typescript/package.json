@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "project --start",
+    "build": "project --build",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "eslintConfig": {
+    "extends": "@malopez1578/eslint-config-ts-app"
   },
   "keywords": [
     "template",

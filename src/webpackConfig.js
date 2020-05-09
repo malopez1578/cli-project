@@ -26,7 +26,7 @@ export async function webpackInit(options) {
                 resolvePluginsRelativeTo: __dirname,
                 ignore: true,
                 baseConfig: {
-                  extends: [require.resolve('config-eslint')],
+                  extends: [require.resolve('@malopez1578/eslint-config-project-app')],
                 },
                 useEslintrc: true,
               },
