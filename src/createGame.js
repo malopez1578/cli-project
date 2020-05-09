@@ -1,4 +1,5 @@
 import chalk from 'chalk';
+import execa from 'execa';
 import fs from 'fs';
 import listr from 'listr';
 import ncp from 'ncp';
@@ -14,14 +15,15 @@ async function copyTemplateFiles(options) {
   });
 }
 
-async function initGit(options) {
-  const result = await execa('git', ['init'], {
-    cwd: options.targetDirectory,
-  });
-  if (result.failed) {
+async function initGit() {
+  try {
+    await execa('git', ['init'], {
+      cwd: process.cwd(),
+    });
+    console.log('%s git initialized ', chalk.green.bold('DONE'));
+  } catch (error) {
     return Promise.reject(new Error('Failed to initialize git'));
   }
-  return;
 }
 
 export async function createProject(options) {
@@ -43,7 +45,7 @@ export async function createProject(options) {
     },
     {
       title: 'initialize Git',
-      task: () => initGit(options),
+      task: () => initGit(),
       enabled: () => options.git,
     },
     {
