@@ -1,5 +1,5 @@
 {
-  "name": "@malopez1578/project",
+  "name": "@malopez1578/projectcli",
   "version": "1.0.0",
   "description": "CLI project with webpack",
   "main": "index.js",
@@ -20,10 +20,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/malopez1578/cli-games-webpack.git"
+    "url": "git+https://github.com/malopez1578/cli-project.git"
   },
   "author": "Miguel Angel López",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@malopez1578/eslint-config-project-app": "^1.0.0",
     "@types/jquery": "^3.3.34",

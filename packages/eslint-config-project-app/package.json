@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/malopez1578/cli-games-webpack.git",
+    "url": "git+https://github.com/malopez1578/cli-project.git",
     "directory": "packages/eslint-config-project-app"
   },
   "publishConfig": {
@@ -23,7 +23,7 @@
     "typescript"
   ],
   "author": "Miguel Angel López",
-  "license": "ISC",
+  "license": "MIT",
   "peerDependencies": {
     "@typescript-eslint/eslint-plugin": ">=2.x",
     "@typescript-eslint/parser": ">=2.x",

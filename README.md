@@ -1,20 +1,20 @@
-## Games TS CLI
+## projects TS CLI
 
-### CLi compila games in ts
+### CLi compila projects in ts
 
 <!-- Badges section here. -->
 
-[![dependencies](https://david-dm.org/malopez1578/cli-games-webpack.png)](https://david-dm.org/malopez1578/cli-games-webpack)
+[![dependencies](https://david-dm.org/malopez1578/cli-project.png)](https://david-dm.org/malopez1578/cli-project)
 
-![npm](https://img.shields.io/github/issues/malopez1578/cli-games-webpack)
-![npm](https://img.shields.io/github/forks/malopez1578/cli-games-webpack)
-![npm](https://img.shields.io/github/stars/malopez1578/cli-games-webpack)
-![npm](https://img.shields.io/github/license/malopez1578/cli-games-webpack)
+![npm](https://img.shields.io/github/issues/malopez1578/cli-project)
+![npm](https://img.shields.io/github/forks/malopez1578/cli-project)
+![npm](https://img.shields.io/github/stars/malopez1578/cli-project)
+![npm](https://img.shields.io/github/license/malopez1578/cli-project)
 
-[![Join the chat at https://gitter.im/cli-games-webpack/community](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/cli-games-webpack/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/cli-project/community](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/cli-project/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-[![GitHub forks](https://img.shields.io/github/forks/malopez1578/cli-games-webpack.svg?style=social&label=Fork)](https://github.com/malopez1578/cli-games-webpack/fork)
-[![GitHub stars](https://img.shields.io/github/stars/malopez1578/cli-games-webpack.svg?style=social&label=Star)](https://github.com/malopez1578/cli-games-webpack)
+[![GitHub forks](https://img.shields.io/github/forks/malopez1578/cli-project.svg?style=social&label=Fork)](https://github.com/malopez1578/cli-project/fork)
+[![GitHub stars](https://img.shields.io/github/stars/malopez1578/cli-project.svg?style=social&label=Star)](https://github.com/malopez1578/cli-project)
 
 ## Prerequisites
 
@@ -35,40 +35,40 @@ with NPM 5.5.1 or higher.
 ### Install Globally
 
 ```bash
-npm install -g @malopez1578/gamescli
+npm install -g @malopez1578/projectcli
 ```
 
 ### Install Locally
 
 ```bash
-npm install @malopez1578/gamescli
+npm install @malopez1578/projectcli
 ```
 
-Alternatively, you can install [npx](https://www.npmjs.com/package/npx) and run `npx game <command>` within the local directory where `npm install @malopez1578/gamescli` was run, which will use the locally installed angular-cli.
+Alternatively, you can install [npx](https://www.npmjs.com/package/npx) and run `npx project <command>` within the local directory where `npm install @malopez1578/projectcli` was run, which will use the locally installed angular-cli.
 
 ### Install Specific Version (Example: 1.0.0)
 
 ```bash
-npm install -g @malopez1578/gamescli@1.0.0
+npm install -g @malopez1578/projectcli@1.0.0
 ```
 
 ## Usage
 
 ```bash
-game [--start, --build, --help]
+project [--start, --build, --help]
 ```
 
 ### Show help
 
 ```bash
-game --help
+project --help
 ```
 
-### Generating and serving an Game compile via a development server
+### Generating and serving an project compile via a development server
 
 ```bash
 cd PROJECT-NAME
-game --start
+project --start
 ```
 
 Navigate to `http://localhost:8080/`. The app will automatically reload if you change any of the source files.
@@ -76,35 +76,35 @@ Navigate to `http://localhost:8080/`. The app will automatically reload if you c
 You can configure the default port used by the development server with one command-line options :
 
 ```bash
-game --start --port 3030
+project --start --port 3030
 ```
 
-### Generating final compilation of the game in production mode
+### Generating final compilation of the project in production mode
 
 ```bash
 cd PROJECT-NAME
-game --build
+project --build
 ```
 
-### Generating initial game files in typescript or Javascript
+### Generating initial project files in typescript or Javascript
 
 ```bash
 cd PROJECT-NAME
-game --new
+project --new
 ```
 
 Optional you can select the template
 
 ```bash
 cd PROJECT-NAME
-game --new --template Typescript
+project --new --template Typescript
 ```
 
 ## Documentation
 
 ## License
 
-[MIT](https://github.com/malopez1578/cli-games-webpack/blob/master/LICENSE.md)
+[MIT](https://github.com/malopez1578/cli-project/blob/master/LICENSE.md)
 
 ## TODO
 
