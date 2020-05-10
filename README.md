@@ -44,8 +44,6 @@ npm install -g @malopez1578/projectcli
 npm install @malopez1578/projectcli
 ```
 
-Alternatively, you can install [npx](https://www.npmjs.com/package/npx) and run `npx project <command>` within the local directory where `npm install @malopez1578/projectcli` was run, which will use the locally installed angular-cli.
-
 ### Install Specific Version (Example: 1.0.0)
 
 ```bash
