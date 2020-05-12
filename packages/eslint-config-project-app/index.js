@@ -29,11 +29,30 @@ module.exports = {
           accessors: 'explicit',
           constructors: 'no-public',
           methods: 'explicit',
-          properties: 'off',
+          properties: 'explicit',
           parameterProperties: 'explicit',
         },
       },
     ],
+    'no-async-without-await': true,
+    'member-ordering': [
+      true,
+      {
+        order: [
+          'public-static-field',
+          'public-instance-field',
+          'public-constructor',
+          'private-static-field',
+          'private-instance-field',
+          'private-constructor',
+          'public-instance-method',
+          'protected-instance-method',
+          'private-instance-method',
+        ],
+        alphabetize: true,
+      },
+    ],
+    'no-inferrable-types': true,
     '@typescript-eslint/naming-convention': [
       'error',
       {
