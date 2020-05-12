@@ -91,12 +91,13 @@ cd PROJECT-NAME
 project --new
 ```
 
+<!--
 Optional you can select the template
 
 ```bash
 cd PROJECT-NAME
 project --new --template Typescript
-```
+``` -->
 
 ## Documentation
 
