@@ -25,7 +25,7 @@
   "author": "Miguel Angel López",
   "license": "MIT",
   "dependencies": {
-    "@malopez1578/eslint-config-project-app": "^1.0.0",
+    "@malopez1578/eslint-config-project-app": "^1.0.1",
     "@types/jquery": "^3.3.34",
     "@types/jqueryui": "^1.12.10",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
