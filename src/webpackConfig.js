@@ -121,7 +121,10 @@ export async function webpackInit(options) {
       stats: 'minimal',
       host: 'localhost',
       compress: true,
-      overlay: true,
+      overlay: {
+        warnings: true,
+        errors: true,
+      },
       inline: true,
       quiet: false,
       noInfo: true,
