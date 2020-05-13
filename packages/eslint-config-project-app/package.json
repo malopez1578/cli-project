@@ -1,6 +1,6 @@
 {
   "name": "@malopez1578/eslint-config-project-app",
-  "version": "1.0.1",
+  "version": "1.0.12",
   "description": "config eslint project app",
   "main": "index.js",
   "scripts": {
