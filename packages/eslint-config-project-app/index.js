@@ -16,6 +16,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   parserOptions: {
+    project: '../tsconfig.json',
     ecmaVersion: 2018,
     sourceType: 'module',
     ecmaFeatures: {
@@ -36,25 +37,7 @@ module.exports = {
         },
       },
     ],
-    '@typescript-eslint/no-async-without-await': true,
-    '@typescript-eslint/member-ordering': [
-      true,
-      {
-        order: [
-          'public-static-field',
-          'public-instance-field',
-          'public-constructor',
-          'private-static-field',
-          'private-instance-field',
-          'private-constructor',
-          'public-instance-method',
-          'protected-instance-method',
-          'private-instance-method',
-        ],
-        alphabetize: true,
-      },
-    ],
-    '@typescript-eslint/no-inferrable-types': true,
+    '@typescript-eslint/no-inferrable-types': 'warn',
     '@typescript-eslint/naming-convention': [
       'error',
       {
@@ -179,6 +162,7 @@ module.exports = {
     'no-sparse-arrays': 'warn',
     'no-template-curly-in-string': 'warn',
     'no-this-before-super': 'warn',
+    '@typescript-eslint/no-this-alias': 'off',
     'no-throw-literal': 'warn',
     'no-undef': 'error',
     'no-unreachable': 'warn',

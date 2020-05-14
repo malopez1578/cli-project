@@ -22,14 +22,14 @@ export async function webpackInit(options) {
           use: [
             {
               options: {
-                cache: true,
+                cache: false,
+                fix: true,
                 eslintPath: require.resolve('eslint'),
                 resolvePluginsRelativeTo: __dirname,
                 ignore: true,
                 baseConfig: {
                   extends: [require.resolve('../packages/eslint-config-project-app')],
                 },
-                useEslintrc: true,
               },
               loader: require.resolve('eslint-loader'),
             },
