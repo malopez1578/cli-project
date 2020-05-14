@@ -4,6 +4,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
   ],
   env: {
     browser: true,
@@ -35,8 +36,8 @@ module.exports = {
         },
       },
     ],
-    'no-async-without-await': true,
-    'member-ordering': [
+    '@typescript-eslint/no-async-without-await': true,
+    '@typescript-eslint/member-ordering': [
       true,
       {
         order: [
@@ -53,7 +54,7 @@ module.exports = {
         alphabetize: true,
       },
     ],
-    'no-inferrable-types': true,
+    '@typescript-eslint/no-inferrable-types': true,
     '@typescript-eslint/naming-convention': [
       'error',
       {

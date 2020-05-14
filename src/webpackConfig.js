@@ -3,6 +3,7 @@ const path = require('path');
 const webpackDevServer = require('webpack-dev-server');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 export async function webpackInit(options) {
   options = {
@@ -26,7 +27,7 @@ export async function webpackInit(options) {
                 resolvePluginsRelativeTo: __dirname,
                 ignore: true,
                 baseConfig: {
-                  extends: [require.resolve('@malopez1578/eslint-config-project-app')],
+                  extends: [require.resolve('../packages/eslint-config-project-app')],
                 },
                 useEslintrc: true,
               },
@@ -48,9 +49,22 @@ export async function webpackInit(options) {
         {
           test: /\.scss$/,
           use: [
-            require.resolve('style-loader'),
+            options.server ? require.resolve('style-loader') : MiniCssExtractPlugin.loader,
             require.resolve('css-loader'),
+            require.resolve('resolve-url-loader'),
             require.resolve('sass-loader'),
+          ],
+        },
+        {
+          test: /\.(png|jpe?g|gif)$/i,
+          use: [
+            {
+              loader: require.resolve('file-loader'),
+              options: {
+                outputPath: '../',
+                name: '[path][name].[ext]',
+              },
+            },
           ],
         },
       ],
@@ -91,17 +105,20 @@ export async function webpackInit(options) {
       new HTMLWebpackPlugin({
         template: './index.pug',
         filename: 'index.html',
-        inject: false,
+        inject: options.server ? false : true,
       }),
       new webpack.optimize.LimitChunkCountPlugin({
         maxChunks: 1,
       }),
+      new MiniCssExtractPlugin({
+        filename: 'index.css',
+      }),
     ],
     output: {
-      path: path.resolve(__dirname, options.targetDirectory),
-      filename: './index.js',
+      path: path.resolve(__dirname, options.targetDirectory + '/dist'),
+      filename: 'index.js',
       libraryTarget: 'this',
-      publicPath: '/',
+      publicPath: './',
     },
   };
 
