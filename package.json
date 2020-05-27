@@ -1,6 +1,6 @@
 {
   "name": "@malopez1578/projectcli",
-  "version": "1.0.17",
+  "version": "1.0.2",
   "description": "CLI project with webpack",
   "main": "index.js",
   "bin": {
@@ -62,5 +62,8 @@
   "bugs": {
     "url": "https://github.com/malopez1578/cli-games-webpack/issues"
   },
-  "homepage": "https://github.com/malopez1578/cli-games-webpack#readme"
+  "homepage": "https://github.com/malopez1578/cli-games-webpack#readme",
+  "devDependencies": {
+    "prepack-webpack-plugin": "^1.1.2"
+  }
 }

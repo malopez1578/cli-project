@@ -4,6 +4,10 @@ const webpackDevServer = require('webpack-dev-server');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PrepackWebpackPlugin = require('prepack-webpack-plugin').default;
+const configPrepack = {
+  trace: true,
+};
 
 export async function webpackInit(options) {
   options = {
@@ -17,7 +21,7 @@ export async function webpackInit(options) {
     module: {
       rules: [
         {
-          test: /\.tsx?$/,
+          test: /index.tsx?$/,
           enforce: 'pre',
           use: [
             {
@@ -56,7 +60,7 @@ export async function webpackInit(options) {
           ],
         },
         {
-          test: /\.(png|jpe?g|gif)$/i,
+          test: /\.(png|jpe?g|gif|svg|ogg|mp3|wav|mpe?g)$/i,
           use: [
             {
               loader: require.resolve('file-loader'),
@@ -123,6 +127,7 @@ export async function webpackInit(options) {
   };
 
   if (options.build) {
+    config.plugins.push(new PrepackWebpackPlugin(configPrepack));
     webpack(config, (err, stats) => {
       if (err || stats.hasErrors()) {
         console.error(err);
