@@ -1,6 +1,6 @@
 {
   "name": "@malopez1578/projectcli",
-  "version": "1.0.2",
+  "version": "1.0.21",
   "description": "CLI project with webpack",
   "main": "index.js",
   "bin": {
@@ -57,13 +57,11 @@
     "typescript": "^3.8.3",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
+    "prepack-webpack-plugin": "^1.1.2",
     "webpack-dev-server": "^3.10.3"
   },
   "bugs": {
     "url": "https://github.com/malopez1578/cli-games-webpack/issues"
   },
-  "homepage": "https://github.com/malopez1578/cli-games-webpack#readme",
-  "devDependencies": {
-    "prepack-webpack-plugin": "^1.1.2"
-  }
+  "homepage": "https://github.com/malopez1578/cli-games-webpack#readme"
 }

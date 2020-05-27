@@ -5,10 +5,10 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PrepackWebpackPlugin = require('prepack-webpack-plugin').default;
+const isExtendingEslintConfig = process.env.EXTEND_ESLINT === 'true';
 const configPrepack = {
   trace: true,
 };
-
 export async function webpackInit(options) {
   options = {
     ...options,
@@ -26,14 +26,17 @@ export async function webpackInit(options) {
           use: [
             {
               options: {
-                cache: false,
+                cache: true,
                 fix: true,
                 eslintPath: require.resolve('eslint'),
                 resolvePluginsRelativeTo: __dirname,
-                ignore: true,
-                baseConfig: {
-                  extends: [require.resolve('../packages/eslint-config-project-app')],
-                },
+                ignore: isExtendingEslintConfig,
+                baseConfig: isExtendingEslintConfig
+                  ? undefined
+                  : {
+                      extends: [require.resolve('../packages/eslint-config-project-app')],
+                    },
+                useEslintrc: isExtendingEslintConfig,
               },
               loader: require.resolve('eslint-loader'),
             },
