@@ -71,7 +71,19 @@ export async function webpackInit(options) {
           ],
         },
         {
-          test: /\.(png|jpe?g|gif|ttf|otf|woff|svg|ogg|mp3|wav|mpe?g)$/i,
+          test: /\.(png|jpe?g|gif|svg|ogg|mp3|wav|mpe?g)$/i,
+          use: [
+            {
+              loader: require.resolve("file-loader"),
+              options: {
+                outputPath: "../",
+                name: "[path][name].[ext]",
+              },
+            },
+          ],
+        },
+        {
+          test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
           use: [
             {
               loader: require.resolve("file-loader"),
