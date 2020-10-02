@@ -1,6 +1,6 @@
 {
   "name": "@malopez1578/projectcli",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "CLI project with webpack",
   "main": "index.js",
   "bin": {

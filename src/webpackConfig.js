@@ -1,11 +1,11 @@
-const webpack = require('webpack');
-const path = require('path');
-const webpackDevServer = require('webpack-dev-server');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const PrepackWebpackPlugin = require('prepack-webpack-plugin').default;
-const isExtendingEslintConfig = process.env.EXTEND_ESLINT === 'true';
+const webpack = require("webpack");
+const path = require("path");
+const webpackDevServer = require("webpack-dev-server");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const PrepackWebpackPlugin = require("prepack-webpack-plugin").default;
+const isExtendingEslintConfig = process.env.EXTEND_ESLINT === "true";
 const configPrepack = {
   trace: true,
 };
@@ -15,30 +15,36 @@ export async function webpackInit(options) {
     targetDirectory: options.targetDirectory || process.cwd(),
   };
   const config = {
-    entry: [path.resolve(__dirname, options.targetDirectory + '/index.ts')],
-    mode: options.server ? 'development' : 'production',
-    devtool: options.server ? 'cheap-module-eval-source-map' : 'inline-source-map',
+    entry: [path.resolve(__dirname, options.targetDirectory + "/index.ts")],
+    mode: options.server ? "development" : "production",
+    devtool: options.server
+      ? "cheap-module-eval-source-map"
+      : "inline-source-map",
     module: {
       rules: [
         {
           test: /index.tsx?$/,
-          enforce: 'pre',
+          enforce: "pre",
           use: [
             {
               options: {
                 cache: true,
                 fix: true,
-                eslintPath: require.resolve('eslint'),
+                eslintPath: require.resolve("eslint"),
                 resolvePluginsRelativeTo: __dirname,
                 ignore: isExtendingEslintConfig,
                 baseConfig: isExtendingEslintConfig
                   ? undefined
                   : {
-                      extends: [require.resolve('../packages/eslint-config-project-app')],
+                      extends: [
+                        require.resolve(
+                          "../packages/eslint-config-project-app"
+                        ),
+                      ],
                     },
                 useEslintrc: isExtendingEslintConfig,
               },
-              loader: require.resolve('eslint-loader'),
+              loader: require.resolve("eslint-loader"),
             },
           ],
           include: path.resolve(__dirname, options.targetDirectory),
@@ -46,30 +52,32 @@ export async function webpackInit(options) {
         },
         {
           test: /\.tsx?$/,
-          loader: require.resolve('awesome-typescript-loader'),
+          loader: require.resolve("awesome-typescript-loader"),
           exclude: /node_modules/,
         },
         {
           test: /\.pug$/,
-          loader: require.resolve('pug-loader'),
+          loader: require.resolve("pug-loader"),
         },
         {
           test: /\.scss$/,
           use: [
-            options.server ? require.resolve('style-loader') : MiniCssExtractPlugin.loader,
-            require.resolve('css-loader'),
-            require.resolve('resolve-url-loader'),
-            require.resolve('sass-loader'),
+            options.server
+              ? require.resolve("style-loader")
+              : MiniCssExtractPlugin.loader,
+            require.resolve("css-loader"),
+            require.resolve("resolve-url-loader"),
+            require.resolve("sass-loader"),
           ],
         },
         {
-          test: /\.(png|jpe?g|gif|svg|ogg|mp3|wav|mpe?g)$/i,
+          test: /\.(png|jpe?g|gif|ttf|otf|woff|svg|ogg|mp3|wav|mpe?g)$/i,
           use: [
             {
-              loader: require.resolve('file-loader'),
+              loader: require.resolve("file-loader"),
               options: {
-                outputPath: '../',
-                name: '[path][name].[ext]',
+                outputPath: "../",
+                name: "[path][name].[ext]",
               },
             },
           ],
@@ -77,7 +85,7 @@ export async function webpackInit(options) {
       ],
     },
     resolve: {
-      extensions: ['.wasm', '.mjs', '.js', '.jsx', '.ts', '.tsx', '.json'],
+      extensions: [".wasm", ".mjs", ".js", ".jsx", ".ts", ".tsx", ".json"],
     },
     optimization: {
       minimize: true,
@@ -110,22 +118,22 @@ export async function webpackInit(options) {
     },
     plugins: [
       new HTMLWebpackPlugin({
-        template: './index.pug',
-        filename: 'index.html',
+        template: "./index.pug",
+        filename: "index.html",
         inject: options.server ? false : true,
       }),
       new webpack.optimize.LimitChunkCountPlugin({
         maxChunks: 1,
       }),
       new MiniCssExtractPlugin({
-        filename: 'index.css',
+        filename: "index.css",
       }),
     ],
     output: {
-      path: path.resolve(__dirname, options.targetDirectory + '/dist'),
-      filename: 'index.js',
-      libraryTarget: 'this',
-      publicPath: './',
+      path: path.resolve(__dirname, options.targetDirectory + "/dist"),
+      filename: "index.js",
+      libraryTarget: "this",
+      publicPath: "./",
     },
   };
 
@@ -141,10 +149,10 @@ export async function webpackInit(options) {
 
   if (options.server) {
     let servOpts = {
-      contentBase: './',
+      contentBase: "./",
       open: true,
-      stats: 'minimal',
-      host: 'localhost',
+      stats: "minimal",
+      host: "localhost",
       compress: true,
       overlay: {
         warnings: true,
@@ -165,8 +173,8 @@ export async function webpackInit(options) {
     const compiler = webpack(config);
     const server = new webpackDevServer(compiler, servOpts);
 
-    server.listen(options.port, 'localhost', () => {
-      console.log('dev server listening on port', options.port);
+    server.listen(options.port, "localhost", () => {
+      console.log("dev server listening on port", options.port);
     });
   }
 }
